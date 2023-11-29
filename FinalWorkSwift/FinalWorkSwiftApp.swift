@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct FinalWorkSwiftApp: App {
@@ -13,5 +14,6 @@ struct FinalWorkSwiftApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [Favorite.self])
     }
 }

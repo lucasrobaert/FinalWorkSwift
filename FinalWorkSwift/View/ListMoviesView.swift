@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ListMoviesView: View {
+    @StateObject var viewModel = MovieViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ZStack {
+                if !viewModel.movies.isEmpty{
+                    MoviesListView(movies: viewModel.movies, viewModel: viewModel)
+                } else {
+                    LoadingView()
+                }
+            }.navigationTitle("Popular Movies")
+            
+        }.onAppear{
+            viewModel.fetchData()
+        }
     }
 }
 
